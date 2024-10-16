@@ -13,17 +13,20 @@ class BaseCountryFilter(filters.FilterSet):
 
 class FactoryCountryFilter(BaseCountryFilter):
     """ Класс для фильтрации по стране для модели Factory. """
+
     class Meta(BaseCountryFilter.Meta):
         model = Factory
 
 
 class RetailerCountryFilter(BaseCountryFilter):
     """ Класс для фильтрации по стране для модели Retailer. """
+
     class Meta(BaseCountryFilter.Meta):
         model = Retailer
 
 
 class TraderCountryFilter(BaseCountryFilter):
     """ Класс для фильтрации по стране для модели Trader. """
+
     class Meta(BaseCountryFilter.Meta):
         model = Trader
