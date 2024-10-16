@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.core.checks import messages
-
 from chain.models import Contacts, Products, Factory, Retailer, Trader
 
 
@@ -19,8 +18,9 @@ class ProductsAdmin(admin.ModelAdmin):
 
 
 class CityFilter(admin.SimpleListFilter):
-    title = 'Город'  # Название фильтра, которое будет отображаться в админке
-    parameter_name = 'contacts__city'  # Название параметра для фильтрации
+    """ Кастомный фильтр ддя отображения города в админке. """
+    title = 'Город'
+    parameter_name = 'contacts__city'
 
     def lookups(self, request, model_admin):
         # Возвращает список уникальных городов для фильтрации
@@ -58,10 +58,7 @@ class RetailerAdmin(admin.ModelAdmin):
     def get_provider(self, obj):
         if obj.provider_factory:
             return obj.provider_factory.name
-        elif obj.provider_retailer:
-            return obj.provider_retailer.name
-        elif obj.provider_trader:
-            return obj.provider_trader.name
+        return "Нет поставщика"
 
     @admin.action(description='Очистка задолженности перед поставщиком у выбранных объектов')
     def set_null(self, request, queryset):
@@ -82,8 +79,7 @@ class TraderAdmin(admin.ModelAdmin):
             return obj.provider_factory.name
         elif obj.provider_retailer:
             return obj.provider_retailer.name
-        elif obj.provider_trader:
-            return obj.provider_trader.name
+        return "Нет поставщика"
 
     @admin.action(description='Очистка задолженности перед поставщиком у выбранных объектов')
     def set_null(self, request, queryset):
