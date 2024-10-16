@@ -13,11 +13,13 @@ from chain.filters import (
     RetailerCountryFilter,
     TraderCountryFilter
 )
+from chain.paginators import CustomPagination
 
 
 class ContactsViewSet(viewsets.ModelViewSet):
     queryset = Contacts.objects.all()
     serializer_class = ContactsSerializer
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         contacts = serializer.save()
@@ -28,6 +30,7 @@ class ContactsViewSet(viewsets.ModelViewSet):
 class ProductsViewSet(viewsets.ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         products = serializer.save()
@@ -38,6 +41,7 @@ class ProductsViewSet(viewsets.ModelViewSet):
 class FactoryViewSet(viewsets.ModelViewSet):
     queryset = Factory.objects.all()
     serializer_class = FactorySerializer
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         factory = serializer.save()
@@ -53,11 +57,13 @@ class FactoryListAPIView(generics.ListAPIView):
     serializer_class = FactorySerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = FactoryCountryFilter
+    pagination_class = CustomPagination
 
 
 class RetailerViewSet(viewsets.ModelViewSet):
     queryset = Retailer.objects.all()
     serializer_class = RetailerSerializer
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         retailer = serializer.save()
@@ -73,11 +79,13 @@ class RetailerListAPIView(generics.ListAPIView):
     serializer_class = RetailerSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = RetailerCountryFilter
+    pagination_class = CustomPagination
 
 
 class TraderViewSet(viewsets.ModelViewSet):
     queryset = Trader.objects.all()
     serializer_class = TraderSerializer
+    pagination_class = CustomPagination
 
     def perform_create(self, serializer):
         trader = serializer.save()
@@ -93,3 +101,4 @@ class TraderListAPIView(generics.ListAPIView):
     serializer_class = TraderSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = TraderCountryFilter
+    pagination_class = CustomPagination

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from chain.models import Contacts, Products, Factory, Retailer, Trader
-from chain.validators import validate_debt, ValidateDebt
+from chain.validators import validate_debt
 
 
 class BaseSerializer(serializers.ModelSerializer):
