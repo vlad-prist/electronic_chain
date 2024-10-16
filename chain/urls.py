@@ -5,7 +5,9 @@ from chain.views import (
     RetailerViewSet,
     TraderViewSet,
     FactoryListAPIView,
-    FactoryViewSet
+    FactoryViewSet,
+    RetailerListAPIView,
+    TraderListAPIView
 
 )
 from chain.apps import ChainConfig
@@ -22,5 +24,7 @@ router.register(r'traders', TraderViewSet, basename='traders')
 
 
 urlpatterns = [
-    path('factories/list', FactoryListAPIView.as_view(), name='factories_list'),
+    path('factories/list/', FactoryListAPIView.as_view(), name='factories_list'),
+    path('retailers/list/', RetailerListAPIView.as_view(), name='retailers_list'),
+    path('traders/list/', TraderListAPIView.as_view(), name='traders_list'),
 ]+router.urls

@@ -1,4 +1,5 @@
 from rest_framework import viewsets, generics
+from django_filters.rest_framework import DjangoFilterBackend
 from chain.models import Contacts, Products, Factory, Retailer, Trader
 from chain.serializers import (
     ContactsSerializer,
@@ -6,6 +7,11 @@ from chain.serializers import (
     FactorySerializer,
     RetailerSerializer,
     TraderSerializer,
+)
+from chain.filters import (
+    FactoryCountryFilter,
+    RetailerCountryFilter,
+    TraderCountryFilter
 )
 
 
@@ -40,9 +46,13 @@ class FactoryViewSet(viewsets.ModelViewSet):
 
 
 class FactoryListAPIView(generics.ListAPIView):
-    """ Запрашивает из БД список всех фабрик, отсортированных по названию. """
+    """
+    Запрашивает из БД список всех экземпляров модели Factory, отсортированных по названию.
+    """
     queryset = Factory.objects.all().order_by("name")
     serializer_class = FactorySerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = FactoryCountryFilter
 
 
 class RetailerViewSet(viewsets.ModelViewSet):
@@ -55,6 +65,16 @@ class RetailerViewSet(viewsets.ModelViewSet):
         return retailer
 
 
+class RetailerListAPIView(generics.ListAPIView):
+    """
+    Запрашивает из БД список всех экземпляров модели Retailer, отсортированных по названию.
+    """
+    queryset = Retailer.objects.all().order_by("name")
+    serializer_class = RetailerSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = RetailerCountryFilter
+
+
 class TraderViewSet(viewsets.ModelViewSet):
     queryset = Trader.objects.all()
     serializer_class = TraderSerializer
@@ -63,3 +83,13 @@ class TraderViewSet(viewsets.ModelViewSet):
         trader = serializer.save()
         trader.save()
         return trader
+
+
+class TraderListAPIView(generics.ListAPIView):
+    """
+    Запрашивает из БД список всех экземпляров модели Trader, отсортированных по названию.
+    """
+    queryset = Trader.objects.all().order_by("name")
+    serializer_class = TraderSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = TraderCountryFilter
