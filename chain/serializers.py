@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from chain.models import Contacts, Products, Factory, Retailer, Trader
+from chain.validators import validate_debt, ValidateDebt
 
 
 class BaseSerializer(serializers.ModelSerializer):
@@ -16,6 +17,7 @@ class BaseSerializer(serializers.ModelSerializer):
 
 class ContactsSerializer(BaseSerializer):
     """ Сериалайзер модели Contacts. """
+
     class Meta:
         model = Contacts
         fields = ('id', 'email', 'country', 'city', 'street', 'office',)
@@ -45,15 +47,15 @@ class RetailerSerializer(BaseSerializer):
     products = ProductsSerializer(many=True)
     contacts = ContactsSerializer()
     provider = serializers.SerializerMethodField()
+    debt = serializers.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        validators=[validate_debt]
+    )
 
     class Meta:
         model = Retailer
         fields = ('id', 'name', 'contacts', 'provider', 'products', 'debt', 'created_at',)
-
-    def update(self, obj, validated_data):
-        """ Запрет на обновление через API поля «Задолженность». """
-        validated_data.pop('debt', None)
-        return super().update(obj, validated_data)
 
     def get_provider(self, obj):
         if obj.provider_factory:
@@ -65,15 +67,15 @@ class TraderSerializer(BaseSerializer):
     products = ProductsSerializer(many=True)
     contacts = ContactsSerializer()
     provider = serializers.SerializerMethodField()
+    debt = serializers.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        validators=[validate_debt]
+    )
 
     class Meta:
         model = Trader
         fields = ('id', 'name', 'contacts', 'provider', 'products', 'debt', 'created_at',)
-
-    def update(self, obj, validated_data):
-        """ Запрет на обновление через API поля «Задолженность». """
-        validated_data.pop('debt', None)
-        return super().update(obj, validated_data)
 
     def get_provider(self, obj):
         if obj.provider_factory:
