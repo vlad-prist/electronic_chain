@@ -5,7 +5,7 @@ from chain.models import Contacts, Products, Factory, Retailer, Trader
 
 @admin.register(Contacts)
 class ContactsAdmin(admin.ModelAdmin):
-    list_display = ('email', 'country', 'city', 'street', 'office',)
+    list_display = ('email', 'country', 'city', 'street', 'house_number',)
     list_filter = ('country', 'city')
     search_fields = ('email', 'country', 'city',)
 

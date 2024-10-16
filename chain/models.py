@@ -22,7 +22,7 @@ class Contacts(BaseModel):
     country = models.CharField(max_length=100, verbose_name='страна')
     city = models.CharField(max_length=100, verbose_name='город')
     street = models.CharField(max_length=100, verbose_name='улица')
-    office = models.CharField(max_length=100, verbose_name='номер дома')
+    house_number = models.CharField(max_length=100, verbose_name='номер дома')
 
     def __str__(self):
         return f'{self.email}, {self.country}, {self.city}, {self.street}, {self.office}'

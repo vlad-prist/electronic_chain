@@ -20,7 +20,7 @@ class ContactsSerializer(BaseSerializer):
 
     class Meta:
         model = Contacts
-        fields = ('id', 'email', 'country', 'city', 'street', 'office',)
+        fields = ('id', 'email', 'country', 'city', 'street', 'house_number',)
 
 
 class ProductsSerializer(BaseSerializer):
