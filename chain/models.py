@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db import models
 
 
@@ -5,7 +7,7 @@ NULLABLE = {'blank': True, 'null': True}
 
 
 class BaseModel(models.Model):
-    """Базовая модель с полями создания и изменения."""
+    """ Базовая модель с полями создания и изменения. """
     objects = models.Manager()
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="время создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="время последнего изменения")
@@ -37,7 +39,11 @@ class Products(BaseModel):
     release_date = models.DateField(auto_now_add=False, verbose_name='дата выпуска', help_text='ДД.ММ.ГГГГ')
 
     def __str__(self):
-        return f'{self.name}, {self.model}, {self.release_date}'
+        """
+        Запись '%s: %s' % (self.name, self.model) — это форматирование строки с использованием оператора %,
+        где вместо плейсхолдеров %s подставляются значения полей name и model объекта.
+        """
+        return '%s, %s, %s' % (self.name, self.model, self.release_date)
 
     class Meta:
         verbose_name = 'продукт'
@@ -45,22 +51,28 @@ class Products(BaseModel):
 
 
 class Factory(BaseModel):
-    """Модель завод."""
+    """ Модель производителя (завода). """
     name = models.CharField(max_length=100)
     contacts = models.OneToOneField(Contacts, on_delete=models.CASCADE, related_name='address')
     products = models.ManyToManyField(Products)
-    debt = models.FloatField(default=0.00, verbose_name='задолженность', **NULLABLE)
+    debt = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        default=Decimal('0.00'),
+        verbose_name='задолженность',
+        **NULLABLE
+    )
 
     def __str__(self):
-        return f'{self.name}, {self.contacts}, {self.products}'
+        return f'Производитель: {self.name}, контакты: {self.contacts}'
 
     class Meta:
-        verbose_name = 'завод'
-        verbose_name_plural = 'заводы'
+        verbose_name = 'производитель'
+        verbose_name_plural = 'производители'
 
 
 class Retailer(BaseModel):
-    """Модель розничной сети."""
+    """ Модель розничной сети. """
     name = models.CharField(max_length=100)
     contacts = models.OneToOneField(Contacts, on_delete=models.CASCADE, related_name='retailer')
     products = models.ManyToManyField(Products)
@@ -68,65 +80,65 @@ class Retailer(BaseModel):
         Factory,
         on_delete=models.SET_NULL,
         **NULLABLE,
-        related_name='provider_retailers'
+        related_name='supplied_retailers'
     )
-    provider_retailer = models.ForeignKey(
-        'self',
-        on_delete=models.SET_NULL,
-        **NULLABLE,
-        related_name='provider_retailers'
+    debt = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        default=Decimal('0.00'),
+        verbose_name='задолженность',
+        **NULLABLE
     )
-    provider_trader = models.ForeignKey(
-        'Trader',
-        on_delete=models.SET_NULL,
-        **NULLABLE,
-        related_name='provider_retailers'
-    )
-    debt = models.FloatField(default=0.00, verbose_name='задолженность', **NULLABLE)
 
     def __str__(self):
-        return f'{self.name}, {self.contacts}, {self.products}'
+        return f'Розничная сеть: {self.name}, контакты: {self.contacts}'
 
     class Meta:
         verbose_name = 'розничная сеть'
         verbose_name_plural = 'розничные сети'
 
     def get_provider(self):
-        return self.provider_factory.name or self.provider_retailer.name or self.provider_trader.name
+        """ Метод определения поставщика. """
+        if self.provider_factory:
+            return self.provider_factory.name
+        return "Нет поставщика"
 
 
 class Trader(BaseModel):
-    """Модель индивидуальный предприниматель."""
+    """ Модель индивидуальный предприниматель. """
     name = models.CharField(max_length=100)
     contacts = models.OneToOneField(Contacts, on_delete=models.CASCADE, related_name='trader')
     products = models.ManyToManyField(Products)
-    # factory = models.ForeignKey(Factory, on_delete=models.CASCADE, related_name='traders')
     provider_factory = models.ForeignKey(
         Factory,
         on_delete=models.SET_NULL,
         **NULLABLE,
-        related_name='provider_traders'
+        related_name='provider_for_traders'
     )
     provider_retailer = models.ForeignKey(
         Retailer,
         on_delete=models.SET_NULL,
         **NULLABLE,
-        related_name='provider_traders'
+        related_name='provider_for_traders'
     )
-    provider_trader = models.ForeignKey(
-        'self',
-        on_delete=models.SET_NULL,
-        **NULLABLE,
-        related_name='provider_traders'
+    debt = models.DecimalField(
+        max_digits=15,
+        decimal_places=2,
+        default=Decimal('0.00'),
+        verbose_name='задолженность'
     )
-    debt = models.FloatField(default=0.00, verbose_name='задолженность', **NULLABLE)
 
     def __str__(self):
-        return f'{self.name}, {self.contacts}, {self.products}'
+        return f'Индивидуальный предприниматель: {self.name}, контакты: {self.contacts}'
 
     class Meta:
         verbose_name = 'индивидуальный предприниматель'
         verbose_name_plural = 'индивидуальные предприниматели'
 
     def get_provider(self):
-        return self.provider_factory.name or self.provider_retailer.name or self.provider_trader.name
+        ''' Метод определения поставщика. '''
+        if self.provider_factory:
+            return self.provider_factory.name
+        elif self.provider_retailer:
+            return self.provider_retailer.name
+        return "Нет поставщика"
