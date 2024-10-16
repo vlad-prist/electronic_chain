@@ -25,7 +25,7 @@ class Contacts(BaseModel):
     house_number = models.CharField(max_length=100, verbose_name='номер дома')
 
     def __str__(self):
-        return f'{self.email}, {self.country}, {self.city}, {self.street}, {self.office}'
+        return f'{self.email}, {self.country}, {self.city}, {self.street}, {self.house_number}'
 
     class Meta:
         verbose_name = 'контакт'
