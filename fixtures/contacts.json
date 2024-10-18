@@ -1,0 +1,132 @@
+[
+{
+  "model": "chain.contacts",
+  "pk": 6,
+  "fields": {
+    "created_at": "2024-10-18T07:40:28.681Z",
+    "updated_at": "2024-10-18T07:40:28.681Z",
+    "email": "dyson@moskva.com",
+    "country": "Россия",
+    "city": "Москва",
+    "street": "Волгоградский проезд",
+    "house_number": "1б"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 7,
+  "fields": {
+    "created_at": "2024-10-18T07:41:22.874Z",
+    "updated_at": "2024-10-18T07:41:22.874Z",
+    "email": "apple@prohibit.com",
+    "country": "Россия",
+    "city": "Санкт-Петербург",
+    "street": "Лиговский проспект",
+    "house_number": "18"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 8,
+  "fields": {
+    "created_at": "2024-10-18T07:42:25.483Z",
+    "updated_at": "2024-10-18T07:42:25.483Z",
+    "email": "apple@icloud.com",
+    "country": "США",
+    "city": "Калифорния",
+    "street": "Силиконовая долина",
+    "house_number": "777"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 9,
+  "fields": {
+    "created_at": "2024-10-18T07:43:19.390Z",
+    "updated_at": "2024-10-18T07:43:19.390Z",
+    "email": "dyson@minsk.com",
+    "country": "Беларусь",
+    "city": "Минск",
+    "street": "Кастрычинская",
+    "house_number": "18"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 10,
+  "fields": {
+    "created_at": "2024-10-18T07:44:29.948Z",
+    "updated_at": "2024-10-18T07:44:29.948Z",
+    "email": "ipadre.spb@icloud.com",
+    "country": "Россия",
+    "city": "Санкт-Петербург",
+    "street": "Сенная площадь",
+    "house_number": "18"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 11,
+  "fields": {
+    "created_at": "2024-10-18T07:46:34.276Z",
+    "updated_at": "2024-10-18T07:46:34.276Z",
+    "email": "ipadre.msk@icloud.com",
+    "country": "Россия",
+    "city": "Москва",
+    "street": "Тверская-Ямская",
+    "house_number": "7"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 12,
+  "fields": {
+    "created_at": "2024-10-18T07:47:31.042Z",
+    "updated_at": "2024-10-18T07:47:31.042Z",
+    "email": "dyson-official@minsk.by",
+    "country": "Беларусь",
+    "city": "Минск",
+    "street": "Янки Купала",
+    "house_number": "15"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 13,
+  "fields": {
+    "created_at": "2024-10-18T07:48:34.314Z",
+    "updated_at": "2024-10-18T07:48:34.314Z",
+    "email": "smartphones@yandex.ru",
+    "country": "Россия",
+    "city": "Чебоксары",
+    "street": "Малиновская",
+    "house_number": "56"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 14,
+  "fields": {
+    "created_at": "2024-10-18T07:50:29.200Z",
+    "updated_at": "2024-10-18T07:50:29.200Z",
+    "email": "hairtoyou@gmail.com",
+    "country": "Украина",
+    "city": "Львов",
+    "street": "Княгини Ольги",
+    "house_number": "12"
+  }
+},
+{
+  "model": "chain.contacts",
+  "pk": 15,
+  "fields": {
+    "created_at": "2024-10-18T07:52:56.701Z",
+    "updated_at": "2024-10-18T07:52:56.701Z",
+    "email": "dyson-official@moscow.ru",
+    "country": "Россия",
+    "city": "Москва",
+    "street": "Цветной бульвар",
+    "house_number": "18"
+  }
+}
+]

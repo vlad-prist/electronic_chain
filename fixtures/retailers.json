@@ -1,0 +1,48 @@
+[
+{
+  "model": "chain.retailer",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-10-18T07:44:44.762Z",
+    "updated_at": "2024-10-18T07:44:44.762Z",
+    "name": "iPadre SPB",
+    "contacts": 10,
+    "provider_factory": 5,
+    "debt": "11.00",
+    "products": [
+      2
+    ]
+  }
+},
+{
+  "model": "chain.retailer",
+  "pk": 3,
+  "fields": {
+    "created_at": "2024-10-18T07:46:40.167Z",
+    "updated_at": "2024-10-18T07:46:40.167Z",
+    "name": "iPadre Msk",
+    "contacts": 11,
+    "provider_factory": 6,
+    "debt": "180000.00",
+    "products": [
+      1
+    ]
+  }
+},
+{
+  "model": "chain.retailer",
+  "pk": 4,
+  "fields": {
+    "created_at": "2024-10-18T07:47:44.502Z",
+    "updated_at": "2024-10-18T07:47:44.502Z",
+    "name": "Dyson Belarus.Official",
+    "contacts": 12,
+    "provider_factory": 7,
+    "debt": "590543.00",
+    "products": [
+      8,
+      7
+    ]
+  }
+}
+]

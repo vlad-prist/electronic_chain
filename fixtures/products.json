@@ -1,0 +1,68 @@
+[
+{
+  "model": "chain.products",
+  "pk": 1,
+  "fields": {
+    "created_at": "2024-10-15T12:07:59.734Z",
+    "updated_at": "2024-10-15T12:07:59.734Z",
+    "name": "Apple iPhone 16 Pro Max",
+    "model": "16 Pro Max",
+    "release_date": "2024-09-20"
+  }
+},
+{
+  "model": "chain.products",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-10-15T12:08:33.873Z",
+    "updated_at": "2024-10-15T12:08:33.873Z",
+    "name": "Apple iPhone 15 Pro",
+    "model": "15 Pro",
+    "release_date": "2023-09-15"
+  }
+},
+{
+  "model": "chain.products",
+  "pk": 5,
+  "fields": {
+    "created_at": "2024-10-18T07:37:44.161Z",
+    "updated_at": "2024-10-18T07:39:33.939Z",
+    "name": "Фен для волос Dyson Supersonic",
+    "model": "Dyson Supersonic HD08 (Vinca blue и Rosé)",
+    "release_date": "2022-10-10"
+  }
+},
+{
+  "model": "chain.products",
+  "pk": 6,
+  "fields": {
+    "created_at": "2024-10-18T07:38:13.050Z",
+    "updated_at": "2024-10-18T07:39:23.099Z",
+    "name": "Стайлер Dyson Airwrap",
+    "model": "Dyson Airwrap HS05 Complete Long (Vinca blue Rosé)",
+    "release_date": "2024-10-18"
+  }
+},
+{
+  "model": "chain.products",
+  "pk": 7,
+  "fields": {
+    "created_at": "2024-10-18T07:38:42.899Z",
+    "updated_at": "2024-10-18T07:39:10.715Z",
+    "name": "Робот-пылесос Dyson",
+    "model": "Dyson 360 Vis Nav",
+    "release_date": "2024-01-01"
+  }
+},
+{
+  "model": "chain.products",
+  "pk": 8,
+  "fields": {
+    "created_at": "2024-10-18T07:39:05.411Z",
+    "updated_at": "2024-10-18T07:39:05.411Z",
+    "name": "Беспроводной пылесос Dyson",
+    "model": "Dyson Wash G1",
+    "release_date": "2023-05-01"
+  }
+}
+]

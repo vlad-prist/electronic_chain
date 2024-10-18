@@ -1,0 +1,53 @@
+[
+{
+  "model": "chain.trader",
+  "pk": 2,
+  "fields": {
+    "created_at": "2024-10-18T07:48:53.947Z",
+    "updated_at": "2024-10-18T07:48:53.947Z",
+    "name": "ИП Коробков В.А.",
+    "contacts": 13,
+    "provider_factory": 5,
+    "provider_retailer": null,
+    "debt": "58652.25",
+    "products": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "chain.trader",
+  "pk": 3,
+  "fields": {
+    "created_at": "2024-10-18T07:50:46.802Z",
+    "updated_at": "2024-10-18T07:50:46.802Z",
+    "name": "ИП Мандаринов П.А.",
+    "contacts": 14,
+    "provider_factory": null,
+    "provider_retailer": 4,
+    "debt": "5232.15",
+    "products": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "chain.trader",
+  "pk": 4,
+  "fields": {
+    "created_at": "2024-10-18T07:53:11.582Z",
+    "updated_at": "2024-10-18T07:53:11.582Z",
+    "name": "ИП Толстой В.Н.",
+    "contacts": 15,
+    "provider_factory": 4,
+    "provider_retailer": null,
+    "debt": "0.36",
+    "products": [
+      5,
+      6
+    ]
+  }
+}
+]

@@ -1,0 +1,64 @@
+[
+{
+  "model": "chain.factory",
+  "pk": 4,
+  "fields": {
+    "created_at": "2024-10-18T07:40:36.988Z",
+    "updated_at": "2024-10-18T07:40:36.988Z",
+    "name": "DysonMoscow",
+    "contacts": 6,
+    "debt": "0.00",
+    "products": [
+      8,
+      5,
+      6,
+      7
+    ]
+  }
+},
+{
+  "model": "chain.factory",
+  "pk": 5,
+  "fields": {
+    "created_at": "2024-10-18T07:41:26.346Z",
+    "updated_at": "2024-10-18T07:41:26.346Z",
+    "name": "Apple-Zaprechenka",
+    "contacts": 7,
+    "debt": "0.00",
+    "products": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "chain.factory",
+  "pk": 6,
+  "fields": {
+    "created_at": "2024-10-18T07:42:33.235Z",
+    "updated_at": "2024-10-18T07:42:33.235Z",
+    "name": "Apple Co",
+    "contacts": 8,
+    "debt": "0.00",
+    "products": [
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "chain.factory",
+  "pk": 7,
+  "fields": {
+    "created_at": "2024-10-18T07:43:23.568Z",
+    "updated_at": "2024-10-18T07:43:23.568Z",
+    "name": "Dyson Belarus",
+    "contacts": 9,
+    "debt": "0.00",
+    "products": [
+      8,
+      7
+    ]
+  }
+}
+]
