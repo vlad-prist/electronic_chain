@@ -34,18 +34,27 @@ class ProductsSerializer(BaseSerializer):
 
 class FactorySerializer(BaseSerializer):
     """ Сериалайзер модели Factory. """
-    products = ProductsSerializer(many=True)
-    contacts = ContactsSerializer()
+    products_name_only = serializers.SerializerMethodField()
+    contacts_readable = serializers.SerializerMethodField()
 
     class Meta:
         model = Factory
-        fields = ('id', 'name', 'contacts', 'products', 'created_at',)
+        fields = ('id', 'name', 'contacts_readable', 'products_name_only', 'created_at',)
+        read_only_fields = ('created_at',)
+
+    def get_products_name_only(self, obj):
+        return [product.name for product in obj.products.all()]
+
+    def get_contacts_readable(self, obj):
+        return (f"email: {obj.contacts.email}. "
+                f"Адрес: {obj.contacts.country}, г.{obj.contacts.city}, "
+                f"{obj.contacts.street}, {obj.contacts.house_number}.")
 
 
 class RetailerSerializer(BaseSerializer):
     """ Сериалайзер модели Retailer. """
-    products = ProductsSerializer(many=True)
-    contacts = ContactsSerializer()
+    products_name_only = serializers.SerializerMethodField()
+    contacts_readable = serializers.SerializerMethodField()
     provider = serializers.SerializerMethodField()
     debt = serializers.DecimalField(
         max_digits=15,
@@ -55,17 +64,26 @@ class RetailerSerializer(BaseSerializer):
 
     class Meta:
         model = Retailer
-        fields = ('id', 'name', 'contacts', 'provider', 'products', 'debt', 'created_at',)
+        fields = ('id', 'name', 'contacts_readable', 'provider', 'products_name_only', 'debt', 'created_at',)
+        read_only_fields = ('created_at',)
 
     def get_provider(self, obj):
         if obj.provider_factory:
             return obj.provider_factory.name
         return "Нет поставщика"
 
+    def get_products_name_only(self, obj):
+        return [product.name for product in obj.products.all()]
+
+    def get_contacts_readable(self, obj):
+        return (f"email: {obj.contacts.email}. "
+                f"Адрес: {obj.contacts.country}, г.{obj.contacts.city}, "
+                f"{obj.contacts.street}, {obj.contacts.house_number}.")
+
 
 class TraderSerializer(BaseSerializer):
-    products = ProductsSerializer(many=True)
-    contacts = ContactsSerializer()
+    products_name_only = serializers.SerializerMethodField()
+    contacts_readable = serializers.SerializerMethodField()
     provider = serializers.SerializerMethodField()
     debt = serializers.DecimalField(
         max_digits=15,
@@ -75,7 +93,8 @@ class TraderSerializer(BaseSerializer):
 
     class Meta:
         model = Trader
-        fields = ('id', 'name', 'contacts', 'provider', 'products', 'debt', 'created_at',)
+        fields = ('id', 'name', 'contacts_readable', 'provider', 'products_name_only', 'debt', 'created_at',)
+        read_only_fields = ('created_at',)
 
     def get_provider(self, obj):
         if obj.provider_factory:
@@ -83,3 +102,11 @@ class TraderSerializer(BaseSerializer):
         elif obj.provider_retailer:
             return obj.provider_retailer.name
         return "Нет поставщика"
+
+    def get_products_name_only(self, obj):
+        return [product.name for product in obj.products.all()]
+
+    def get_contacts_readable(self, obj):
+        return (f"email: {obj.contacts.email}. "
+                f"Адрес: {obj.contacts.country}, г.{obj.contacts.city}, "
+                f"{obj.contacts.street}, {obj.contacts.house_number}.")
